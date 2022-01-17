@@ -1,6 +1,6 @@
 const toggleBtn = document.createElement('button');
 
-toggleBtn.innerHTML = 'Click me';
+toggleBtn.innerHTML = 'Show Text';
 document.body.appendChild(toggleBtn);
 
 toggleBtn.style.cssText = `
@@ -17,13 +17,37 @@ toggleBtn.style.cssText = `
 
 toggleBtn.classList.add('toggle-btn');
 
-toggleBtn.addEventListener('click', () => {
-  const introText = document.createElement('p');
-  const introTextNode = document.createTextNode(
-    'ACA just taught me about continuous integration and continuous deployment.'
-  );
-  introText.classList.add('intro-text');
-  introText.appendChild(introTextNode);
+let isTextShowing = false;
 
-  toggleBtn.insertAdjacentHTML('afterend', introText.innerHTML);
-});
+const text = document.querySelector('.intro-text');
+const toggleText = () => {
+  const str = 'hello';
+
+  if (isTextShowing) {
+    toggleBtn.innerHTML = 'Show Text';
+    text.style.cssText = `visibility: hidden`;
+    isTextShowing = false;
+    return;
+  } else {
+    toggleBtn.innerHTML = 'Hide Text';
+    text.innerHTML = str;
+    text.style.cssText = `visibility: visible`;
+    isTextShowing = true;
+    return;
+  }
+
+  // const introText = document.createElement('p');
+  // if (!isTextShowing) {
+  //   isTextShowing = true;
+  //   console.log('text is not showing');
+  //   introText.textContent = 'hello';
+  //   introText.classList.add('intro-text');
+
+  //   toggleBtn.insertAdjacentHTML('afterend', introText.textContent);
+  //   console.log('it is now');
+  // } else {
+  //   console.log(document.body.childNodes);
+  //   console.log(document.body.children);
+};
+
+toggleBtn.addEventListener('click', toggleText);
