@@ -21,7 +21,7 @@ let isTextShowing = false;
 
 const text = document.querySelector('.intro-text');
 const toggleText = () => {
-  const str = 'hello';
+  const str = 'ACA just taught me about continuous integration and continuous deployment.';
 
   if (isTextShowing) {
     toggleBtn.innerHTML = 'Show Text';
